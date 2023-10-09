@@ -101,10 +101,11 @@ app.use((err, req, res, next) => {
 });
 // Mongoose
 const PORT = process.env.PORT;
-const DB = process.env.DATABASE_URI.replace(
-  "<PASSWORD>",
-  process.env.DATABASE_PASSWORD
-);
+// const DB = process.env.DATABASE_URI.replace(
+//   "<PASSWORD>",
+//   process.env.DATABASE_PASSWORD
+// );
+const DB = process.env.DATABASE_URI;
 mongoose
   .connect(DB, {
     // for connecting to remote database
