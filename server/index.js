@@ -105,7 +105,7 @@ const PORT = process.env.PORT;
 //   "<PASSWORD>",
 //   process.env.DATABASE_PASSWORD
 // );
-const DB = process.env.DATABASE_URI;
+const DB = process.env.DATABASE_URI; // for production```
 mongoose
   .connect(DB, {
     // for connecting to remote database
