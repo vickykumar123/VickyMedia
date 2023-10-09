@@ -57,4 +57,3 @@ To get started with VickyMedia, follow these steps:
 We welcome contributions from the open-source community! Whether you find a bug, have a feature request, or want to contribute code, feel free to open an issue or submit a pull request. Let's collaborate to make VickyMedia even better!
 
 
-Feel free to copy and paste this content into your README.md file on GitHub, and customize it further according to your project's specific details.
