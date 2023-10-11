@@ -17,6 +17,7 @@ import {
   IconButton,
   useMediaQuery,
 } from "@mui/material";
+import toast from "react-hot-toast";
 import FlexBetween from "../../components/FlexBetween";
 import Dropzone from "react-dropzone";
 import UserImage from "../../components/UserImage";
@@ -46,17 +47,22 @@ function MyPostWidget() {
       formData.append("picture", image);
       formData.append("picturePath", image.name);
     }
-
-    const response = await fetch("/post", {
-      method: "POST",
-      headers: { Authorization: `Bearer ${token}` },
-      body: formData,
-    });
-    const data = await response.json();
-    const posts = data.post;
-    dispatch(setPosts({ posts }));
-    setImage(null);
-    setDescription("");
+    try {
+      const response = await fetch("http://127.0.0.1:3000/post", {
+        method: "POST",
+        headers: { Authorization: `Bearer ${token}` },
+        body: formData,
+      });
+      const data = await response.json();
+      const posts = data.post;
+      dispatch(setPosts({ posts }));
+      toast("Post uploaded Successfully 🥳");
+      setImage(null);
+      setDescription("");
+      setIsImage(false);
+    } catch (err) {
+      toast(err);
+    }
   }
 
   return (

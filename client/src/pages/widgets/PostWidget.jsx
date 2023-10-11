@@ -35,7 +35,7 @@ const PostWidget = ({
   const primary = palette.primary.main;
 
   const patchLike = async () => {
-    const response = await fetch(`/post/${postId}/like`, {
+    const response = await fetch(`http://127.0.0.1:3000/post/${postId}/like`, {
       method: "PATCH",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -65,7 +65,7 @@ const PostWidget = ({
           height="30px"
           alt="post"
           style={{ borderRadius: "0.75rem", marginTop: "0.75rem" }}
-          src={`/assets/${picturePath}`}
+          src={`http://127.0.0.1:3000/assets/${picturePath}`}
         />
       )}
       <FlexBetween mt="0.25rem">

@@ -22,13 +22,16 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
   const isFriend = friends?.find((friend) => friend._id === friendId);
 
   const patchFriend = async () => {
-    const response = await fetch(`/user/${_id}/${friendId}`, {
-      method: "PATCH",
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await fetch(
+      `http://127.0.0.1:3000/user/${_id}/${friendId}`,
+      {
+        method: "PATCH",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
     const data = await response.json();
     dispatch(setFriends({ friends: data }));
   };

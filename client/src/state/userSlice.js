@@ -30,7 +30,7 @@ const userSlice = createSlice({
       }
     },
     setPosts: (state, action) => {
-      console.log(action.payload);
+      // console.log(action.payload);
       state.posts = action.payload.posts;
     },
     setPost: (state, action) => {

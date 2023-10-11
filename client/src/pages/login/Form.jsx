@@ -19,6 +19,7 @@ import FlexBetween from "../../components/FlexBetween";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Container from "@mui/material/Container";
 import AssignmentIndIcon from "@mui/icons-material/AssignmentInd";
+import toast from "react-hot-toast";
 // import { ToastContainer, toast } from "react-toastify";
 
 const signUpSchema = yup.object().shape({
@@ -100,20 +101,24 @@ function Form() {
         }
       );
       const savedUser = await savedUserResponse.json();
+      if (savedUser.status === "failed") {
+        throw new Error(savedUser.message);
+      }
       onSubmitProps.resetForm();
 
       if (savedUser) {
+        toast("🥳 Signned up successfully");
         setPageType("login");
       }
     } catch (err) {
-      console.log(err);
+      toast(`🚫 ${err}`);
     }
   };
 
   const login = async (values, onSubmitProps) => {
     try {
       // console.log(JSON.stringify(values));
-      const loggedInResponse = await fetch("/auth/login", {
+      const loggedInResponse = await fetch("http://127.0.0.1:3000/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),
@@ -133,12 +138,12 @@ function Form() {
             token: loggedIn?.token,
           })
         );
-
+        toast("🥳 Loggedin successfully");
         navigate("/home");
         // console.log(user);
       }
     } catch (err) {
-      alert(err.message);
+      toast(`❌ ${err}`);
     }
   };
 

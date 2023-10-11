@@ -10,7 +10,7 @@ const PostsWidget = ({ userId, isProfile = false }) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const getPosts = useCallback(async () => {
-    const response = await fetch("/post", {
+    const response = await fetch("http://127.0.0.1:3000/post", {
       method: "GET",
       headers: { Authorization: `Bearer ${token}` },
     });
@@ -21,7 +21,7 @@ const PostsWidget = ({ userId, isProfile = false }) => {
   }, [dispatch, token]);
 
   const getUserPosts = useCallback(async () => {
-    const response = await fetch(`/post/${userId}/posts`, {
+    const response = await fetch(`http://127.0.0.1:3000/post/${userId}/posts`, {
       method: "GET",
       headers: { Authorization: `Bearer ${token}` },
     });
